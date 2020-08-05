@@ -1,0 +1,269 @@
+ref:https://hackernoon.com/dont-install-postgres-docker-pull-postgres-bee20e200198
+1.Getting the Postgres Docker Image
+	docker pull postgres
+2. create data volume mount points for.
+
+	mkdir -p $HOME/docker/volumes/postgres
+3. Run the Postgres Container
+--docker run --rm  --name pg-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data  postgres
+
+docker run --name postgres -e POSTGRES_PASSWORD=postgres  -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data -p 5432:5432 -d postgres
+
+docker run --name postgres -v pgdata:/var/lib/postgresql/9.3/main -p 5432:5432 -d postgres
+
+4. Connect to Postgres
+	psql -h localhost -U postgres -d postgres
+
+
+docker-machine regenerate-certs
+---------------------------------------------------
+
+Another way using Dockerfile
+ref: https://docs.docker.com/engine/examples/postgresql_service/
+https://severalnines.com/blog/deploying-postgresql-docker-container
+
+Step 1: Create Dockerfile
+Step 2: Build image form docker file
+
+	cd /D/my_data2/2.my_projects-2/51.Daimler-MultiBrand-Charging/4.Code/git/dfs-mbfc-code/PostgresSQL
+	$ docker build -t postgresondocker:9.3 .
+Step 3 : Container Network Creation
+	Use below command to create a user defined network with bridge driver.
+	sudo docker network create --driver bridge postgres-network
+	
+Step 3-1: check 
+	docker network ls
+Step 4: Container Creation
+	docker run --name postgresondocker --network postgres-network -d postgresondocker:9.3
+Step 4-1 check
+	docker container ls
+	NOte: default postgres port 5432 for internal use. PostgreSQL is available only from inside the Docker network, 	we will not able to access this Postgres container on a host port
+
+Step 5 : Connecting to PostgreSQL container inside Docker network
+	 psql client to connect to the Postgres
+
+	docker run -it --rm --network postgres-network postgresondocker:9.3 psql -h postgresondocker -U docker --password
+
+	password docker
+Step 6:  check
+	docker container ls
+
+Step 7: Data persistence
+	create a data volume 
+	docker volume create pgdata
+Step 7-1 Check
+	docker volume ls
+Step 8: Use data volume while running the container
+
+	\q to exit from psql
+ 	remove previous container
+		docker container rm postgresondocker -f
+
+	docker run --name postgresondocker --network postgres-network -v pgdata:/var/lib/postgresql/9.3/main -d 	postgresondocker:9.3
+Step 9: Create a new table in Postgres to check data persistence
+	docker run -it --rm --network postgres-network postgresondocker:9.3 psql -h postgresondocker -U docker --password
+	
+	\dt		
+	create table test(id int);
+step 10 : Delete the Postgres container
+	docker container rm postgresondocker -f 
+
+Step 11. Create a new Postgres container and confirm the test table present or not.
+	docker run --name postgresondocker --network postgres-network -v pgdata:/var/lib/postgresql/9.3/main -d postgresondocker:9.3
+	
+	docker run -it --rm --network postgres-network postgresondocker:9.3 psql -h postgresondocker -U docker --password
+
+Step 12:  Expose PostgreSQL service to the host
+===================================================
+	expose the Postgres container port 5432 on 5432 port of the host.
+remove container
+
+	docker run --name postgresondocker --network postgres-network -v pgdata:/var/lib/postgresql/9.3/main -p 5432:5432 -d postgresondocker:9.3
+
+step 12-1 : check
+	docker container ls
+
+step 13: connect PostgreSQL on localhost directly
+
+	psql -h localhost -U docker --password
+	note localhost : dockert machine ip e.g. 192.168.99.100
+
+	psql -h 192.168.99.100 -U docker --password
+
+Step 14: download postgreSQL client
+	ref: https://www.postgresql.org/download/windows/
+	setup : https://www.microfocus.com/documentation/idol/IDOL_12_0/MediaServer/Guides/html/English/Content/Getting_Started/Configure/_TRN_Set_up_PostgreSQL.htm
+
+Step 15: Container Deletion
+
+	docker container stop postgresondocker 
+	docker container rm postgresondocker
+	note: Use -f (--force) option to directly delete the running container.
+	ocker container rm postgresondocker -f
+
+=============
+docker stop postgresondocker 
+docker start postgresondocker 
+docker rm postgresondocker 
+=========
+================================postgresql:10.8-2.4 ===============
+
+docker run --name postgres --network postgres-network -v pgdata:/var/lib/postgresql/9.3/main -p 5432:5432 -d postgres
+
+psql -h 192.168.99.100 -U postgres --password
+docker start postgres
+=================
+
+Commands
+============================
+	\list or \l: list all databases
+	•\dt: list all tables in the current database
+	To switch databases:
+	\connect database_name or \c database_name
+	list schema 
+	\dn	list of all schemas (namespaces)
+manual: https://www.postgresql.org/docs/current/app-psql.html
+ref: https://dba.stackexchange.com/questions/1285/how-do-i-list-all-databases-and-tables-using-psql
+==============================
+create DB
+
+CREATE DATABASE postgres1
+
+CREATE DATABASE foo;
+ \connect foo;
+
+CREATE SCHEMA case_mbfc_driverinapp_api_local
+
+SELECT * FROM information_schema.tables
+SELECT * FROM information_schema.columns WHERE table_schema = 'case_mbfc_driverinapp_api_int' AND table_name = 'TEMP_FLEET_MANAGER';
+
+select * from case_mbfc_driverinapp_api_int.TEMP_FLEET_MANAGER;
+====================================================
+
+npm install --save font-awesome angular-font-awesome 
+to install
+
+
+
+https://flywaydb.org/
+
+liquibase
+ref: https://stackoverflow.com/questions/50118310/postgres-database-creation-with-liquibase
+http://localhost:4200/api/v1/fsp/7/fsp-services-links
+
+liquibase for test
+https://stackoverflow.com/questions/47036222/how-to-create-liquibase-changeset-for-integration-tests-in-springboot
+
+UPDATE DATABASECHANGELOGLOCK SET LOCKED=FALSE, LOCKGRANTED=null, LOCKEDBY=null where ID=1;
+
+Issue 1: 
+
+class path resource cannot be resolved to absolute file path because it does not reside in the file system: jar:file:/user/app/app.jar!/BOOT-INF/classes!/nearbylocation.json",
+
+
+
+Postgres admin
+================================
+Please set a master password for pgAdmin.
+This will be used to secure and later unlock saved passwords and other credentials.
+password:  pgAdmin
+
+http://wiki.postgresql.org/wiki/Community_Guide_to_PostgreSQL_GUI_Tools
+https://www.pgadmin.org/docs/pgadmin4/development/query_tool.html
+
+http://127.0.0.1:50141/browser/
+======================================
+
+SQL Scripts for drop
+======================
+drop table batch_job_execution_params;
+drop table batch_job_execution_context;
+drop table batch_step_execution_context;
+drop table batch_step_execution;
+drop table batch_job_execution;
+drop table batch_job_instance;
+
+--fsp
+
+
+DROP TABLE IF EXISTS FLEET_DRIVER;
+DROP TABLE IF EXISTS FLEET_MANAGER;
+
+
+DROP TABLE IF EXISTS FSP_EMSP_LINK;
+DROP TABLE IF EXISTS FSP_CPO_LINK;
+DROP TABLE IF EXISTS FSP_SERVICES_LINK;
+DROP TABLE IF EXISTS FSP_SERVICES;
+DROP TABLE IF EXISTS fleet_service_provider_admin;
+DROP TABLE IF EXISTS fleet_service_provider;
+
+
+DROP TABLE IF EXISTS USER_ROLES;
+DROP TABLE IF EXISTS USERS;
+DROP TABLE IF EXISTS ROLES; 
+
+DROP TABLE IF EXISTS DATABASECHANGELOGLOCK; 
+DROP TABLE IF EXISTS DATABASECHANGELOG; 
+
+DROP TABLE IF EXISTS PROFILE_FORM;
+
+DROP TABLE IF EXISTS EMAIL_NOTIFICATION;
+
+DROP TABLE IF EXISTS phone_country_code;
+DROP TABLE IF EXISTS legal_entity;
+DROP TABLE IF EXISTS contract_type;
+DROP TABLE IF EXISTS brand_preference;
+DROP TABLE IF EXISTS country;
+
+-- emsp
+DROP TABLE IF EXISTS ONBOARD_CHARGE_POINT_OPERATOR_MANAGER;
+DROP TABLE IF EXISTS ONBOARD_CHARGE_POINT_OPERATOR;
+DROP TABLE IF EXISTS CPO_SERVICES_LINK;
+DROP TABLE IF EXISTS CPO_SERVICES;
+DROP TABLE IF EXISTS CHARGE_POINT_OPERATOR_MANAGER;
+DROP TABLE IF EXISTS CHARGE_POINT_OPERATOR;
+
+DROP TABLE IF EXISTS ONBOARD_EMSP_MANAGER;
+DROP TABLE IF EXISTS ONBOARD_EMSP;
+
+DROP TABLE IF EXISTS emobility_service_provider_manager;
+DROP TABLE IF EXISTS emobility_service_provider_range_of_services;
+DROP TABLE IF EXISTS emobility_service_provider_charger_type;
+DROP TABLE IF EXISTS EMSP_SERVICES_LINK;
+DROP TABLE IF EXISTS EMSP_SERVICES;
+DROP TABLE IF EXISTS emobility_service_provider;
+
+DROP TABLE IF EXISTS ONBOARD_RFID_SUPPLIER;
+DROP TABLE IF EXISTS ONBOARD_RFID_SUPPLIER_MANAGER;
+DROP TABLE IF EXISTS ONBOARD_ROLES;
+
+DROP TABLE IF EXISTS RFID_SUPPLIER_SERVICES_LINK;
+DROP TABLE IF EXISTS RFID_SUPPLIER_SERVICES;
+
+DROP TABLE IF EXISTS RFID_SUPPLIER_MANAGER;
+DROP TABLE IF EXISTS RFID_SUPPLIER;
+
+DROP TABLE IF EXISTS range_of_services;
+DROP TABLE IF EXISTS charger_type;
+DROP TABLE IF EXISTS contract_type;
+DROP TABLE IF EXISTS legal_entity;
+DROP TABLE IF EXISTS phone_country_code;
+DROP TABLE IF EXISTS country;
+========================================
+
+
+
+===========
+Initial Data
+=======================
+https://stackoverflow.com/questions/38040572/spring-boot-loading-initial-data
+https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto-database-initialization
+==========================
+
+OR]   FleetManagerControllerIT.testFindDriversById_OK:91 No value at JSON path "$[0].id"
+[ERROR]   FleetManagerControllerIT.testGetFleetManagers_OK:73 Content type not set
+
+
+SQL Maven plugin
+https://www.mojohaus.org/sql-maven-plugin/examples/execute.html
+

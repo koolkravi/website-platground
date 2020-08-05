@@ -1,0 +1,122 @@
+<html>
+<hrad>
+    <title> Door To Rehab Single Product </title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src=" https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</hrad>
+
+<body>
+    <div class="top-nav-bar">
+        <div class="search-box">
+            <i class="fa fa-bars" id="menu-btn" onClick="openmenu()"></i>
+            <i class="fa fa-times" id="close-btn" onClick="closemenu()"></i>
+
+            <a href="index.html"><img src="images/150-50Logo.png" class="logo"></a>
+            <input type="text" class="form-control">
+            <span class="input-group-text"><i class="fa fa-search"></i></span>
+        </div>
+
+        <div class="menu-bar">
+            <ul>
+                <li><a href="#"><i class="fa fa-shopping-basket"></i>
+                        Cart</a></li>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="#">Log In</a></li>
+            </ul>
+        </div>
+    </div>
+
+   <!-------------account page-------------->
+<section class="account-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="images/image1.png" width="100%">
+            </div>
+            <div class="col-2">
+                <div class="form-container">
+                    <div class="form-btn">
+                        <span onclick="login()">Login</span>
+                        <span  onclick="register()">Register</span>
+                        <hr id ="Indicator">
+                    </div>
+                    <form id="LoginForm">
+                        <input type="text" placeholder="Username">
+                        <input type="password" placeholder="password">
+                        <button type="submit" class="btn">Login</button>
+                        <a href=""> Forget password</a>
+                    </form>
+                    <form id="RegForm">
+                        <input type="text" placeholder="Username">
+                        <input type="email" placeholder="Email">
+                        <input type="password" placeholder="password">
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!--------------Footer------------>
+    <section class="footer">
+        <div class="container tex-center">
+            <div class="row">
+                <div class="col-md-3">
+                    <h1>Useful Links</h1>
+                    <p>Privacy Policy</p>
+                    <p>Terms of Use</p>
+                    <p>Return Policy</p>
+                    <p>Discount Coupons</p>
+                </div>
+                <div class="col-md-3">
+                    <h1>Company</h1>
+                    <p>About Us</p>
+                    <p>Contact Us</p>
+                    <p>Career</p>
+                    <p>Affliate</p>
+                </div>
+                <div class="col-md-3">
+                    <h1>Follow Us On</h1>
+                    <p><i class="fa fa-facebook-official"></i> Facebook</p>
+                    <p><i class="fa fa-youtube-play"></i> Youtube</p>
+                    <p><i class="fa fa-linkedin"></i> Linkedin</p>
+                    <p><i class="fa fa-twitter"></i> Twitter</p>
+                </div>
+                <div class="col-md-3 footer-image">
+                    <h1>Download App</h1>
+                    <img src="images/app-logo.png">
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">With <i class="fa fa-heart-o"></i> Door To Rehab</p>
+        </div>
+    </section>
+
+    <!---------js for toggle menu---------------->
+    <script>
+        var LoginForm=document.getElementById("LoginForm");
+        var RegForm=document.getElementById("RegForm");
+        var Indicator=document.getElementById("Indicator");
+        
+        function register(){
+            RegForm.style.transform= "translateX(0px)" ;
+            LoginForm.style.transform= "translateX(0px)" ;
+            Indicator.style.transform= "translateX(100px)" ;
+        }
+        function login(){
+            RegForm.style.transform= "translateX(300px)" ;
+            LoginForm.style.transform= "translateX(300px)" ;
+            Indicator.style.transform= "translateX(0px)" ;
+  
+  }
+ </script>
+</body>
+</html>
