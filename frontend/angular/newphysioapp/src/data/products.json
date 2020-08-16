@@ -1,0 +1,32 @@
+[
+  {
+    "id":1,
+    "type": "Tshirt",
+    "price": 90.00,
+    "imageUrl":"assets/images/product1.jpg"
+  },
+  {
+    "id":2,
+    "type": "Smart Watch",
+    "price": 50.00,
+    "imageUrl":"assets/images/product2.jpg"
+  },
+  {
+    "id":3,
+    "type": "Formal Shoes",
+    "price": 500.00,
+    "imageUrl":"assets/images/product3.jpg"
+  },
+  {
+    "id":4,
+    "type": "Tshirt",
+    "price": 415.00,
+    "imageUrl":"assets/images/product4.jpg"
+  },
+  {
+    "id":5,
+    "type": "Tshirt",
+    "price": 415.00,
+    "imageUrl":"assets/images/product4.jpg"
+  }
+]

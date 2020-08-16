@@ -6,7 +6,7 @@
 
 ## C. Architecture and Design 
 
-## D. Angular 
+## D. Frontend- Angular 
 
-## E. Spring Boot rest services
+## E. backend- Spring Boot rest services
 

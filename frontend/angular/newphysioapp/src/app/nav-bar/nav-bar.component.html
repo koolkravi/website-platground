@@ -1,0 +1,44 @@
+<div class="top-nav-bar">
+  <div class="search-box">
+      <i class="fa fa-bars" id="menu-btn" onClick="openmenu()"></i>
+      <i class="fa fa-times" id="close-btn" onClick="closemenu()"></i>
+
+      <a routerLink="/"><img src="assets/images/150-50Logo.png" class="logo"></a>
+      <input type="text" class="form-control">
+      <span class="input-group-text"><i class="fa fa-search"></i></span>
+  </div>
+
+  <div class="menu-bar">
+      <ul>
+          <li><a href="cart.html"><i class="fa fa-shopping-basket"></i>Cart</a></li>
+          <li *ngIf="!loggedin()"><a href="account.html">Sign Up</a></li>
+          <li *ngIf="!loggedin()" ><a routerLink="/login">Log In</a></li>
+          <li *ngIf="loggedin()"><a (click)="onLogout()" >Log Out</a></li>
+          <li *ngIf="loggedin()">
+            <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
+              <a href id="basic-link" dropdownToggle (click)="false">Welcome {{loggedinUser}}</a>
+              <ul id="basic-link-dropdown" *dropdownMenu class="dropdown-menu"
+                  role="menu" aria-labelledby="basic-link">
+                <!-- <li *ngFor="let choice of items">
+                  <a class="dropdown-item" href="#">{{choice}}</a>
+                </li> -->
+                <a class="dropdown-item" href="#">
+                  <i class="fal fa-tachometer-alt"></i>View Dashboard
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fal fa-user-circle"></i>My Prodile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fal fa-key"></i>Change Password
+                </a>
+                <a (click)="onLogout()" class="dropdown-item" href="#">
+                  <i class="fal fa-sign-out-alt"></i>Logout
+                </a>
+
+              </ul>
+            </span>
+
+          </li>
+      </ul>
+  </div>
+</div>

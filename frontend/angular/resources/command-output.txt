@@ -1,0 +1,71 @@
+ng --version 
+
+output
+Angular CLI: 10.0.5
+Node: 12.18.3
+OS: win32 x64
+
+Angular:
+...
+Ivy Workspace:
+
+Package                      Version
+------------------------------------------------------
+@angular-devkit/architect    0.1000.5
+@angular-devkit/core         10.0.5
+@angular-devkit/schematics   10.0.5
+@schematics/angular          10.0.5
+@schematics/update           0.1000.5
+rxjs                         6.5.5
+
+
+
+
+node install output
+```
+Upgraded:
+ - kb2919355 v1.0.20160915
+ - visualstudio2017-workload-vctools v1.3.2
+ - python3 v3.8.5.20200721
+ - chocolatey-core.extension v1.3.5.1
+ - dotnetfx v4.8.0.20190930
+ - vcredist140 v14.26.28720.3
+ - kb2919442 v1.0.20160915
+ - chocolatey-visualstudio.extension v1.8.1
+ - visualstudio-installer v2.0.1
+ - python v3.8.5.20200721
+ - chocolatey-windowsupdate.extension v1.0.4
+ - kb3033929 v1.0.5
+ - visualstudio2017buildtools v15.9.25.0
+ - vcredist2015 v14.0.24215.20170201
+ - chocolatey-dotnetfx.extension v1.0.1
+ - kb3035131 v1.0.3
+ - kb2999226 v1.0.20181019
+```
+
+
+
+OLD version 
+```
+node -v
+v12.18.3
+npm -v
+6.9.0
+
+ng --version or ng v 
+
+Angular CLI: 8.0.6
+Node: 12.18.3
+OS: win32 x64
+Angular:
+...
+
+Package                      Version
+------------------------------------------------------
+@angular-devkit/architect    0.800.6
+@angular-devkit/core         8.0.6
+@angular-devkit/schematics   8.0.6
+@schematics/angular          8.0.6
+@schematics/update           0.800.6
+rxjs                         6.4.0
+```

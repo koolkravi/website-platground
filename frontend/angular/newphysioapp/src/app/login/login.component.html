@@ -1,0 +1,69 @@
+<section class="account-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <img src="assets/images/image1.png" width="100%">
+      </div>
+      <div class="col-2">
+        <div class="form-container">
+          <div class="form-btn">
+            <span (click)="login()">Login</span>
+            <span (click)="register()">Register</span>
+            <hr id="Indicator" #Indicator>
+          </div>
+
+          <!-- login form -->
+          <form id="LoginForm" #LoginForm [formGroup]="newloginForm" (ngSubmit)="onLoginSubmit()">
+            <input type="text" placeholder="Username"  formControlName=username>
+            <input type="password" placeholder="password"  formControlName=password>
+            <button type="submit" [disabled]='!newloginForm.valid' class="btn">Login</button>
+            <button type="button" class="btn">Cancel</button>
+            <a href=""> Forget password</a>
+          </form>
+          <!-- <form id="LoginForm" #loginForm='ngForm' (ngSubmit)="onLoginSubmit(loginForm)">
+            <input type="text" placeholder="Username"  required ngModel name="username">
+            <input type="password" placeholder="password" required ngModel name="password">
+            <button type="submit" [disabled]="!loginForm.value" class="btn">Login</button>
+            <button type="button" class="btn">Cancel</button>
+            <a href=""> Forget password</a>
+          </form> -->
+
+          <!-- registration form -->
+          <form id="RegForm" #RegForm [formGroup]="registrationForm" (ngSubmit)="onRegSubmit()">
+            <!-- <form id="RegForm" #RegForm> -->
+            <input type="text" placeholder="Username" formControlName=username>
+            <span *ngIf="!username.valid && (username.touched || regFormSubmitted)" class="error-block">
+              Please provide username
+            </span>
+            <input type="email" placeholder="Email"  formControlName=email>
+            <span  *ngIf="!email.valid && (email.touched || regFormSubmitted)" class="error-block">
+              <span *ngIf="email.hasError('required')">
+                  Please provide email Id
+              </span>
+              <span *ngIf="email.hasError('email')">
+                Please provide valid email Id
+              </span>
+            </span>
+            <input type="password" placeholder="Password"  formControlName=password>
+            <input type="password" placeholder="Conformed password" formControlName=conformedpassword>
+            <span  *ngIf="!conformedpassword.valid && (conformedpassword.touched  || regFormSubmitted)" class="error-block">
+              <span *ngIf="conformedpassword.hasError('required')">
+                Please confirmed password
+              </span>
+            </span>
+            <span *ngIf="registrationForm.hasError('nomatched') && conformedpassword.valid">
+              password not matched
+            </span>
+            <input type="text" placeholder="MobileNo" formControlName=mobileNo>
+            <button type="submit" class="btn">Register</button>
+          </form>
+        </div>
+      </div>
+      <!-- Form Values : {{registrationForm.value | json}}
+      <br/>
+      Form Status : {{registrationForm.valid}} -->
+      regFormSubmitted:{{regFormSubmitted}}
+      newloginForm.valid: {{newloginForm.valid}}
+    </div>
+  </div>
+</section>

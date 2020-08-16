@@ -1,0 +1,46 @@
+Current Date : {{Today |date:'medium'}} <br />
+Current Date (local) : {{Today |date|uppercase}} <br />
+Current Date (India): {{Today |date:'medium':'GMT+5:30'}}
+<!---------------- ON Sale product----------------->
+<section class="on-sale">
+  <div class="container">
+    <div class="title-box">
+      <h2>On Sale</h2>
+    </div>
+    <div>
+      <label>Filter Type &nbsp; &nbsp;</label>
+      <input [(ngModel)]='type'> &nbsp;&nbsp;
+      <button type="button" (click)="onTypeFilter()" class="btn btn-secondary">Search</button>
+      &nbsp;&nbsp;
+      <button type="button" (click)="onTypeFilterClear()" class="btn btn-secondary">Clear</button>
+      &nbsp;&nbsp;
+      <label>sort by &nbsp;&nbsp;</label>
+      <select [(ngModel)]='SortByParam'>
+        <option value="type">Type</option>
+        <option value="price">Price</option>
+      </select>
+      &nbsp;&nbsp;
+      <button type="button" (click)="onSortDirection()" class="btn btn-secondary">
+        <i *ngIf="sortDirection==='desc'" class="fa fa-sort-desc"></i>
+        <i *ngIf="sortDirection==='asc'" class="fa fa-sort-asc"></i>
+
+      </button>
+
+    </div>
+
+    <div class="row">
+      <div *ngFor="let property of Properties|filter:searchType:'type'|sort:[SortByParam,sortDirection]"
+        class="col-md-3">
+        <app-product-card [product]="property"></app-product-card>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="add-product">
+  <div class="title-box">
+    <h2>Add New products</h2>
+  </div>
+  <button (click)="addProduct()" class="btn btn-primary">Add Product </button>
+  &nbsp;&nbsp;
+</section>
