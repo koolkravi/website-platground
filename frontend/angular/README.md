@@ -7,8 +7,8 @@ Angular version - 10.0.5 required
 
 ### 1. Node.js
 Angular requires a current, active LTS, or maintenance LTS version of Node.js
-Latest LTS Version: 12.18.3 (includes npm 6.14.6)
-node-v12.18.3-x64.msi
+- Latest LTS Version: 12.18.3 (includes npm 6.14.6)
+- node-v12.18.3-x64.msi
 ```
 node -v
 v12.18.3
@@ -16,8 +16,8 @@ v12.18.3
 
 ### 2. npm package manager
 Angular, the Angular CLI, and Angular applications depend on npm packages for many features and functions
-To download and install npm packages, you need an npm package manager
-npm client command line interface, which is installed with Node.js by default
+- To download and install npm packages, you need an npm package manager
+- npm client command line interface, which is installed with Node.js by default
 ```
 npm -v
 6.14.6
@@ -1331,58 +1331,30 @@ ng serve --open
 ng build --prod
 ```
 
-
-
 ## Reference:
-- 1. Setting up the local environment and workspace
-```
-https://angular.io/guide/setup-local
-```
-- 2. angulatr blog
-```
-https://blog.angular.io/
-```
-
-- 3. https://youtu.be/ufyyhFye7MQ
-
-- 4. fontawesome
-```
-https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers
-
-https://fontawesome.com/v4.7.0/icons/
-```
-
+- Setting up the local environment and workspace : https://angular.io/guide/setup-local
+- angulatr blog : https://blog.angular.io/
+- https://youtu.be/ufyyhFye7MQ
+- Fontawesome : 
+  '''
+   https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers
+   https://fontawesome.com/v4.7.0/icons/
+  ```
 - https://nodejs.org/en/about/
 - https://stackblitz.com/
 
-- angular  work space 
-```
-https://angular.io/guide/glossary#workspace
-```
-
-- scrict mode
-```
-https://angular.io/guide/strict-mode
-```
-
-- https://firebase.google.com/
-
--https://material.angular.io/https://material.angular.io/
-
-- 3. https://www.techiediaries.com/angular/angular-9-tutorial-and-example/
-
+- Angular  work space : https://angular.io/guide/glossary#workspace 
+- scrict mode : https://angular.io/guide/strict-mode
+- FireBase and material :  https://firebase.google.com/
+- https://material.angular.io
+- https://www.techiediaries.com/angular/angular-9-tutorial-and-example/
 - https://alertifyjs.com/guide.html
-https://ourcodeworld.com/articles/read/52/top-10-best-notification-libraries-and-plugins-for-javascript-and-jquery
-
+- https://ourcodeworld.com/articles/read/52/top-10-best-notification-libraries-and-plugins-for-javascript-and-jquery
 - https://stackoverflow.com/questions/46915002/argument-of-type-string-null-is-not-assignable-to-parameter-of-type-string
+- https://angular.io/guide/setup-local
 
-
-
-
-
-
-
-Next 
+## Next 
+```
 Using Service and HTTP calls in Angular 9   -TODO
 https://www.youtube.com/watch?v=YSfY7DcfDQM&list=PL_NVFNExoAxclqXo9fLAeP0G2Qp56Fu8C&index=10
 Modify HTTP Data using Pipe -TODO
@@ -1404,10 +1376,10 @@ Add Login Logout Functionality
 https://www.youtube.com/watch?v=IZ2sNAXROPM&list=PL_NVFNExoAxclqXo9fLAeP0G2Qp56Fu8C&index=20
 
 
-
 Add Route Resolver and Image Gallery
 https://www.youtube.com/watch?v=uR0oB2-BDNE&list=PL_NVFNExoAxclqXo9fLAeP0G2Qp56Fu8C&index=26
 Add Filtering and Sorting using angular pipes
 https://www.youtube.com/watch?v=FoazvbvWL4A&list=PL_NVFNExoAxclqXo9fLAeP0G2Qp56Fu8C&index=27
 
+```
 
