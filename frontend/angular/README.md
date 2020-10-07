@@ -99,7 +99,7 @@ IntelliSense for CSS class names in HTML
 		|
 		|
 						Template(Html. css)  -------------> Directives (Structural, Attribute)
-	   API					(view)
+	   Backend API				     (view)
 		|			  (	   			  )
 		|			 (				   )
 		|			(				    )	
