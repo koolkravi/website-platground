@@ -79,9 +79,9 @@ abgular files   (help to create angular components, services etc.)
 IntelliSense for CSS class names in HTML
 
 ## Step 6: Create home page of application
--create a component product-card.component.ts
--add newly created component into app.module.ts  (will be automatically added while using ng generate component )
--add into app.component.html
+- Create a component product-card.component.ts
+- Add newly created component into app.module.ts  (will be automatically added while using ng generate component )
+- Add into app.component.html
 
 ```
  ng generate component product/product-list
